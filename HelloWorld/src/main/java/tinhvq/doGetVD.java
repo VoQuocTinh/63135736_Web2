@@ -29,9 +29,9 @@ public class doGetVD extends HttpServlet {
     String valuel = request.getParameter ("param1") ;
     String value2 = request.getParameter ("param2") ;
     PrintWriter traVe = response.getWriter();
-    traVe.append ("Gia tri tham so param1 = 13"); 
+    traVe.append ("Gia tri tham so param1 ="); 
     traVe.append (valuel) ;
-    traVe.append ("\n Gia tri tham so param2 = 14") ; 
+    traVe.append ("\n Gia tri tham so param2 =") ; 
     traVe.append (value2);
     }
 }

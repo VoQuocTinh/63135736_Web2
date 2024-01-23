@@ -29,4 +29,14 @@
     <servlet-name>doGetVD</servlet-name>
     <url-pattern>/doGetVD</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>doPostVD</display-name>
+    <servlet-name>doPostVD</servlet-name>
+    <servlet-class>tinhvq.doPostVD</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>doPostVD</servlet-name>
+    <url-pattern>/doPostVD</url-pattern>
+  </servlet-mapping>
 </web-app>
