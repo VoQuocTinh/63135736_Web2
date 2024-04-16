@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>QT</groupId>
-	<artifactId>QLBH_ABC</artifactId>
+	<artifactId>DuanCuoiKy</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>QLBH_ABC</name>
-	<description>Demo QLBH_ABC</description>
+	<name>DuanCuoiKy</name>
+	<description>Du an cuoi ky</description>
 	<properties>
 		<java.version>17</java.version>
 	</properties>
@@ -41,11 +41,6 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>QT</groupId>
-			<artifactId>HelloWorldSpringBoot-2</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 	</dependencies>
 
