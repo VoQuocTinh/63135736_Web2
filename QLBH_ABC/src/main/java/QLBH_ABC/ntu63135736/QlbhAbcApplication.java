@@ -1,4 +1,4 @@
-package ThiGK.ntu63135736;
+package QLBH_ABC.ntu63135736;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
