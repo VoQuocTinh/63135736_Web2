@@ -2,24 +2,62 @@ package Model;
 
 import java.util.Date;
 
-public class Studentmodel {
-    private int studentId;
-    private String studentName;
-    private Date dateOfBirth;
-    private String gender;
-    private String address;
-    private String phone;
-    private String email;
-    private String nationality;
-    private int sequenceNumber;
-    private int classId;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 
-    public int getStudentId() {
+@Entity
+@Table(name = "students")
+public class Studentmodel {
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer studentId;
+    
+    @Column(name = "student_name", nullable = false, length = 100)
+    private String studentName;
+    
+    @Column(name = "date_of_birth")
+    private Date dateOfBirth;
+    
+    @Enumerated(EnumType.STRING)
+    @Column(name = "gender", length = 10)
+    private Gender gender;
+    
+    @Column(name = "address", length = 255)
+    private String address;
+    
+    @Column(name = "phone", length = 20)
+    private String phone;
+    
+    @Column(name = "email", length = 100)
+    private String email;
+    
+    @Column(name = "nationality", length = 50)
+    private String nationality;
+    
+    @Column(name = "sequence_number")
+    private Integer sequenceNumber;
+    
+    @ManyToOne
+    @JoinColumn(name = "class_id")
+    private Classsmodel classModel;
+
+    // Getters and setters
+    
+    public Integer getStudentId() {
         return studentId;
     }
 
-    public void setStudentId(int studentId) {
-        this.studentId = studentId;
+    public void setStudentId(Integer studentId2) {
+        this.studentId = studentId2;
     }
 
     public String getStudentName() {
@@ -38,11 +76,11 @@ public class Studentmodel {
         this.dateOfBirth = dateOfBirth;
     }
 
-    public String getGender() {
+    public Gender getGender() {
         return gender;
     }
 
-    public void setGender(String gender) {
+    public void setGender(Gender gender) {
         this.gender = gender;
     }
 
@@ -78,22 +116,32 @@ public class Studentmodel {
         this.nationality = nationality;
     }
 
-    public int getSequenceNumber() {
+    public Integer getSequenceNumber() {
         return sequenceNumber;
     }
 
-    public void setSequenceNumber(int sequenceNumber) {
+    public void setSequenceNumber(Integer sequenceNumber) {
         this.sequenceNumber = sequenceNumber;
     }
 
-    public int getClassId() {
-        return classId;
+    public Classsmodel getClassModel() {
+        return classModel;
     }
 
-    public void setClassId(int classId) {
-        this.classId = classId;
+    public void setClassModel(Classsmodel classModel) {
+        this.classModel = classModel;
+    }
+    
+    public enum Gender {
+        Male,
+        Female,
+        Other
     }
 }
+
+
+
+
 
 
 

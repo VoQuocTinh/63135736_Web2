@@ -1,12 +1,13 @@
 package Service;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import Model.Studentmodel;
 import Repositorites.StudentRepository;
+
+import java.util.List;
+import java.util.Optional;
 
 @Service
 public class StudentServiceImpt implements StudentService {
@@ -20,8 +21,8 @@ public class StudentServiceImpt implements StudentService {
     }
 
     @Override
-    public Studentmodel getStudentById(int studentId) {
-        return studentRepository.findById(studentId).orElse(null);
+    public Optional<Studentmodel> getStudentById(Integer studentId) {
+        return studentRepository.findById(studentId);
     }
 
     @Override
@@ -30,28 +31,23 @@ public class StudentServiceImpt implements StudentService {
     }
 
     @Override
-    public Studentmodel updateStudent(int studentId, Studentmodel updatedStudent) {
-        Studentmodel existingStudent = studentRepository.findById(studentId).orElse(null);
-        if (existingStudent != null) {
-            existingStudent.setStudentName(updatedStudent.getStudentName());
-            existingStudent.setDateOfBirth(updatedStudent.getDateOfBirth());
-            existingStudent.setGender(updatedStudent.getGender());
-            existingStudent.setAddress(updatedStudent.getAddress());
-            existingStudent.setPhone(updatedStudent.getPhone());
-            existingStudent.setEmail(updatedStudent.getEmail());
-            existingStudent.setNationality(updatedStudent.getNationality());
-            existingStudent.setSequenceNumber(updatedStudent.getSequenceNumber());
-            existingStudent.setClassId(updatedStudent.getClassId());
-            return studentRepository.save(existingStudent);
+    public Studentmodel updateStudent(Integer studentId, Studentmodel updatedStudent) {
+        // Check if student with given ID exists
+        if (studentRepository.existsById(studentId)) {
+            updatedStudent.setStudentId(studentId);
+            return studentRepository.save(updatedStudent);
+        } else {
+            // Handle the case when student with given ID does not exist
+            return null;
         }
-        return null;
     }
 
     @Override
-    public void deleteStudent(int studentId) {
+    public void deleteStudent(Integer studentId) {
         studentRepository.deleteById(studentId);
     }
 }
+
 
 
 

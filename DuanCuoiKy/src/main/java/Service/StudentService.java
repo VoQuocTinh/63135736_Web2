@@ -1,13 +1,22 @@
 package Service;
 
 import java.util.List;
+import java.util.Optional;
 
 import Model.Studentmodel;
 
 public interface StudentService {
+    
     List<Studentmodel> getAllStudents();
-    Studentmodel getStudentById(Long id);
+    
+    Optional<Studentmodel> getStudentById(Integer studentId);
+    
     Studentmodel saveStudent(Studentmodel student);
-    Studentmodel updateStudent(Long id, Studentmodel updatedStudent);
-    void deleteStudent(Long id);
+    
+    Studentmodel updateStudent(Integer studentId, Studentmodel updatedStudent);
+    
+    void deleteStudent(Integer studentId);
+    
 }
+
+
