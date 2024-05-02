@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Thêm Học Sinh</title>
+</head>
+<body>
+    <h2>Thêm Học Sinh Mới</h2>
+    <form action="/hocsinh/them" method="post">
+        <label for="hoDem">Họ đệm:</label><br>
+        <input type="text" id="hoDem" name="hoDem" required><br>
+        
+        <label for="ten">Tên:</label><br>
+        <input type="text" id="ten" name="ten" required><br>
+        
+        <label for="ngaySinh">Ngày Sinh:</label><br>
+        <input type="date" id="ngaySinh" name="ngaySinh" required><br>
+        
+        <label for="diaChi">Địa Chỉ:</label><br>
+        <input type="text" id="diaChi" name="diaChi" required><br>
+        
+        <label for="danToc">Dân Tộc:</label><br>
+        <input type="text" id="danToc" name="danToc" required><br>
+        
+        <label for="noiSinh">Nơi Sinh:</label><br>
+        <input type="text" id="noiSinh" name="noiSinh" required><br>
+        
+        <label for="lopId">Lớp ID:</label><br>
+        <select id="lopId" name="lopId" required>
+            <option value="">Chọn lớp</option>
+            <!-- Loop through each lophoc and populate the dropdown list -->
+            <option th:each="lop : ${listLopHoc}" th:value="${lop.lop_id}" th:text="${lop.ten_lop}"></option>
+        </select><br><br>
+        
+        <input type="submit" value="Thêm">
+    </form>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danh sách Lớp học</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2>Danh sách Lớp học</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Tên Lớp</th>
+                    <th scope="col">ID Giáo viên</th>
+                    <th scope="col">ID Khối học</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Dữ liệu của Lớp học sẽ được lặp qua từ Controller và thêm vào đây -->
+                <!-- Thay vì 'dsLopHoc', bạn có thể sử dụng tên biến phù hợp với dự án của bạn -->
+                <tr th:each="lopHoc : ${dsLopHoc}">
+                    <td th:text="${lopHoc.lopId}"></td>
+                    <td th:text="${lopHoc.tenLop}"></td>
+                    <td th:text="${lopHoc.giaoVienId}"></td>
+                    <td th:text="${lopHoc.khoiId}"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

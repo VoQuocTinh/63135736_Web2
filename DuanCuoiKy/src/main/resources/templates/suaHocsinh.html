@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<div class="container mt-5">
+    <h2 class="mb-4">Chỉnh sửa thông tin học sinh</h2>
+    <form action="/home/sua" method="POST">
+        <div class="mb-3">
+            <label for="ho_ten" class="form-label">Họ và tên:</label>
+            <input type="text" class="form-control" id="ho_ten" name="ho_ten" placeholder="Nhập họ và tên" required>
+        </div>
+        <div class="mb-3">
+            <label for="ngay_sinh" class="form-label">Ngày sinh:</label>
+            <input type="date" class="form-control" id="ngay_sinh" name="ngay_sinh" required>
+        </div>
+        <div class="mb-3">
+            <label for="dia_chi" class="form-label">Địa chỉ:</label>
+            <input type="text" class="form-control" id="dia_chi" name="dia_chi" placeholder="Nhập địa chỉ" required>
+        </div>
+        <div class="mb-3">
+            <label for="lop" class="form-label">Lớp:</label>
+            <input type="text" class="form-control" id="lop" name="lop" placeholder="Nhập lớp" required>
+        </div>
+        <div class="mb-3">
+            <label for="gioi_tinh" class="form-label">Giới tính:</label>
+            <select class="form-select" id="gioi_tinh" name="gioi_tinh" required>
+                <option value="Nam">Nam</option>
+                <option value="Nữ">Nữ</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="dan_toc" class="form-label">Dân tộc:</label>
+            <input type="text" class="form-control" id="dan_toc" name="dan_toc" placeholder="Nhập dân tộc" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Lưu</button>
+    </form>
+</div>
+
+</body>
+</html>

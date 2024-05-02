@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Danh sách Khách hàng</title>
+</head>
+<body>
+    <h1>Danh sách khách hàng</h1>
+    <a href="/themKhachHang"><button>Thêm khách hàng</button></a> <!-- Nút thêm khách hàng -->
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Mã KH</th>
+                <th>Tên KH</th>
+                <th>Địa chỉ</th>
+                <th>Thao tác</th> <!-- Thêm cột cho nút sửa -->
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="kh : ${dsKhachHang}">
+                <td th:text="${kh.id}" />
+                <td th:text="${kh.name}" />
+                <td th:text="${kh.address}" />
+                <td>
+                    <a th:href="@{'/editCustomer?id=' + ${kh.id}}">Sửa</a> <!-- Thêm nút sửa khách hàng -->
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

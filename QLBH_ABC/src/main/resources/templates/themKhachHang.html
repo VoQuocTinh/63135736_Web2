@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Thêm Khách Hàng</title>
+</head>
+<body>
+    <h1>Thêm Khách Hàng Mới</h1>
+    <!-- Thêm form để nhập thông tin khách hàng mới -->
+    <form action="/themKhachHang" method="post">
+        <label for="name">Tên Khách Hàng:</label>
+        <input type="text" id="name" name="name"><br><br>
+        <label for="address">Địa Chỉ:</label>
+        <input type="text" id="address" name="address"><br><br>
+        <button type="submit">Thêm Khách Hàng</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Sửa thông tin khách hàng</title>
+</head>
+<body>
+    <h1>Sửa thông tin khách hàng</h1>
+    <form method="post" action="/customer/all">
+        <input type="hidden" name="id" th:value="${customer.id}" />
+        <label>Tên khách hàng:</label>
+        <input type="text" name="name" th:value="${customer.name}" /><br/>
+        <label>Địa chỉ:</label>
+        <input type="text" name="address" th:value="${customer.address}" /><br/>
+        <input type="submit" value="Lưu" />
+    </form>
+</body>
+</html>
