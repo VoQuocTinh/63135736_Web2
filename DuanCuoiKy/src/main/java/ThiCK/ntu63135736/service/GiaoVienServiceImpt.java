@@ -7,11 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import ThiCK.ntu63135736.model.GiaoVienmodel;
+import ThiCK.ntu63135736.model.Usermodel;
 import ThiCK.ntu63135736.responsitory.GiaoVienResponsitory;
 
 @Service
 public class GiaoVienServiceImpt implements GiaoVienService{
 	@Autowired GiaoVienResponsitory giaoVienResponsitory;
+	
 	@Override
 	public List<GiaoVienmodel> findallGiaoVienmodel(){
 		return giaoVienResponsitory.findAll();
@@ -32,4 +34,6 @@ public class GiaoVienServiceImpt implements GiaoVienService{
 		// TODO Auto-generated method stub
 		
 	}
-	}
+
+}
+	 

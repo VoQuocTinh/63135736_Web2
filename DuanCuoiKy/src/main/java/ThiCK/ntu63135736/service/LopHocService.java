@@ -12,5 +12,6 @@ public interface LopHocService {
 	LopHocmodel findLopHocmodelByID(int id);
     void addLopHocmodel(LopHocmodel lopHocmodel);
     void deleteLopHocmodel(int id);
+    List<LopHocmodel> getallLopHocmodels();
 
 }

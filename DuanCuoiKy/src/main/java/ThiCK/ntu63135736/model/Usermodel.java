@@ -10,7 +10,7 @@ public class Usermodel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_id")
     private int userId;
-
+    
     @Column(name = "username")
     private String username;
 
@@ -76,5 +76,7 @@ public class Usermodel {
     public void setEmail(String email) {
         this.email = email;
     }
+
+
 }
 

@@ -7,5 +7,10 @@ import ThiCK.ntu63135736.model.Usermodel;
 
 @Repository
 public interface UserResponsitory extends JpaRepository<Usermodel, Integer> {
-}
 
+	Usermodel findUserByUsernameAndPassword(String username, String password);
+
+	
+
+	    
+}

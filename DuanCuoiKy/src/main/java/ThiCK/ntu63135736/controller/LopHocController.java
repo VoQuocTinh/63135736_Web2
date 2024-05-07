@@ -20,5 +20,8 @@ public class LopHocController {
 		List<LopHocmodel> dsLH = lopHocService.findallLopHocmodel();
 		model.addAttribute("dsLopHoc", dsLH);
 		return "danhsachLH";
+		
+		
 	}
+	 
 	}

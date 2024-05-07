@@ -12,5 +12,4 @@ import ThiCK.ntu63135736.model.GiaoVienmodel;
 		GiaoVienmodel findGiaoVienmodelByID(int id);
 	    void addGiaoVienmodel(GiaoVienmodel giaoVienmodel);
 	    void deleteGiaoVienmodel(int id);
-
 	}

@@ -32,4 +32,13 @@ public class UserServiceImpt implements UserService{
 		// TODO Auto-generated method stub
 		
 	}
+
+	public Usermodel findUserByUsernameAndPassword(String username, String password) {
+		return userResponsitory.findUserByUsernameAndPassword(username, password);	}
+		
 	}
+
+
+
+
+

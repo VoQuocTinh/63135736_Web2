@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import ThiCK.ntu63135736.model.GiaoVienmodel;
@@ -20,5 +22,6 @@ public class GiaoVienController {
 		List<GiaoVienmodel> dsGV = giaoVienService.findallGiaoVienmodel();
 		model.addAttribute("dsGiaoVien", dsGV);
 		return "danhsachGV";
-	}
+	} 
+	
 	}

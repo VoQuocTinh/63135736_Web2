@@ -31,6 +31,11 @@ public class LopHocServiceImpt implements LopHocService{
 	public void deleteLopHocmodel(int id) {
 		lopHocResponsitory.deleteById(id);
 	}
+	@Override
+	public List<LopHocmodel> getallLopHocmodels() {
+		return lopHocResponsitory.findAll();
+	}
+	
 
 	
 

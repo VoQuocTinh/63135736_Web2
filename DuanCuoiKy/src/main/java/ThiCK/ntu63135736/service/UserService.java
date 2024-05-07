@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import ThiCK.ntu63135736.model.GiaoVienmodel;
 import ThiCK.ntu63135736.model.Usermodel;
 
 @Service
