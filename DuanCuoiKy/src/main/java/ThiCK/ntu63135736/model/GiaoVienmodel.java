@@ -1,6 +1,5 @@
 package ThiCK.ntu63135736.model;
 
-import org.springframework.boot.autoconfigure.security.SecurityProperties.User;
 
 import jakarta.persistence.*;
 
@@ -25,14 +24,6 @@ public class GiaoVienmodel {
     @Column(name = "user_id")
     private Long userId;
     
-
-    // Constructor với tham số
-    public GiaoVienmodel(String hoDem, String ten, String email, Long userId) {
-        this.hoDem = hoDem;
-        this.ten = ten;
-        this.email = email;
-        this.userId = userId;
-    }
 
     // Getters và setters cho các trường
     public Long getId() {

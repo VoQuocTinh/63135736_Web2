@@ -12,6 +12,6 @@ public interface HocsinhService {
 	Hocsinhmodel findHocsinhmodelByID(int id);
     void addHocsinhmodel(Hocsinhmodel hocsinhmodel);
     void deleteHocsinhmodel(int id);
-    void suaHocsinhmodel(Hocsinhmodel hocsinhmodel);
+    void editHocsinhmodel(Hocsinhmodel hocsinhmodel);
 
 }

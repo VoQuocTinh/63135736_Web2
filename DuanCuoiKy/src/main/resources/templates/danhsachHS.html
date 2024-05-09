@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="shortcut icon" ty	pe="image/png" href="../assets/images/logos/favicon.png" />
   <link rel="stylesheet" href="../assets/css/styles.min.css" />
-</head>
+</head>	
 <body>
   <!--  Body Wrapper -->
   <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
@@ -47,19 +47,19 @@
               </a>
             </li>
             <li class="sidebar-item">
-              <a class="sidebar-link" href="./ui-card.html" aria-expanded="false">
+              <a class="sidebar-link" href="/giaovien/all" aria-expanded="false">
                 <span>
                   <i class="ti ti-cards"></i>
                 </span>
-                <span class="hide-menu">Card</span>
+                <span class="hide-menu">Giáo Viên</span>
               </a>
             </li>
             <li class="sidebar-item">
-              <a class="sidebar-link" href="./ui-forms.html" aria-expanded="false">
+              <a class="sidebar-link" href="/User/all" aria-expanded="false">
                 <span>
                   <i class="ti ti-file-description"></i>
                 </span>
-                <span class="hide-menu">Forms</span>
+                <span class="hide-menu">User</span>
               </a>
             </li>
             <li class="sidebar-item">
@@ -90,26 +90,7 @@
                 <span class="hide-menu">Register</span>
               </a>
             </li>
-            <li class="nav-small-cap">
-              <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-              <span class="hide-menu">EXTRA</span>
-            </li>
-            <li class="sidebar-item">
-              <a class="sidebar-link" href="./icon-tabler.html" aria-expanded="false">
-                <span>
-                  <i class="ti ti-mood-happy"></i>
-                </span>
-                <span class="hide-menu">Icons</span>
-              </a>
-            </li>
-            <li class="sidebar-item">
-              <a class="sidebar-link" href="./sample-page.html" aria-expanded="false">
-                <span>
-                  <i class="ti ti-aperture"></i>
-                </span>
-                <span class="hide-menu">Sample Page</span>
-              </a>
-            </li>
+            
           </ul>	
         </nav>
         <!-- End Sidebar navigation -->
@@ -120,7 +101,7 @@
     <!--  Main wrapper -->
     <div class="body-wrapper">
       <!--  Header Start -->
-      <header class="app-header">
+      <header class="app-header" style="padding-left: 5px">
         <nav class="navbar navbar-expand-lg navbar-light">
         <h1 style="font-size:13pt;margin-top: 10pt;">Hồ sơ học sinh</h1>
           <ul class="navbar-nav">
@@ -159,7 +140,7 @@
           </div>
         </nav>
       </header>
-      <div class="container-fluid">    
+      <div class="container-fluid" style="padding-left: 5px ;padding-right: 0px;">    
     <!-- Form tìm kiếm học sinh -->
 <!-- Form tìm kiếm học sinh -->
 <form action="/hocsinh/timkiem" method="GET" class="mb-3 form-inline">
@@ -192,7 +173,7 @@
 </form>
 
 
-     <div class="container">
+     <div class="container" style="padding-left: 0px">
     <!-- Nút thêm học sinh -->
     <div class="mb-3">
         <a href="/home/them" class="btn btn-success">Thêm học sinh</a>
@@ -214,7 +195,7 @@
         </thead>
         <tbody>
             <!-- Lặp qua danh sách học sinh và hiển thị thông tin của mỗi học sinh -->
-            <tr th:each="hocsinh : ${dsHocSinh}"> 
+            <tr  th:each="hocsinh : ${dsHocSinh}"> 
                 <td th:text="${hocsinh.hoc_sinh_id}"></td> 
                 <td th:text="${hocsinh.ho_dem}"></td> 
                 <td th:text="${hocsinh.ten}"></td> 
@@ -225,9 +206,18 @@
                 <td th:text="${hocsinh.lop_id}"></td>
                 <!-- Thêm nút sửa và xóa -->
                 <td>
-                    <a th:href="@{/home/sua/{id}(id=${hocsinh.hoc_sinh_id})}" class="btn btn-warning btn-sm">Sửa</a>
-                    <a th:href="@{/hocsinh/xoa/{id}(id=${hocsinh.hoc_sinh_id})}" class="btn btn-danger btn-sm">Xóa</a> <!-- Sửa href -->
-                </td>
+    <!-- Nút sửa -->
+    <a th:href="@{/home/editHocsinh(id=${hocsinh.hoc_sinh_id})}" class="btn btn-warning btn-sm">Sửa</a>
+    
+    <!-- Form gửi yêu cầu xóa -->
+    <form th:action="@{/home/delete/{id}(id=${hocsinh.hoc_sinh_id})}" method="post" style="display: inline;">
+        <!-- Sử dụng input hidden để truyền ID của học sinh -->
+        <input type="hidden" name="id" th:value="${hocsinh.hoc_sinh_id}" />
+        <!-- Nút xóa -->
+        <button type="submit" class="btn btn-danger btn-sm">Xóa</button>
+    </form>
+</td>
+
             </tr> 
         </tbody>
     </table>

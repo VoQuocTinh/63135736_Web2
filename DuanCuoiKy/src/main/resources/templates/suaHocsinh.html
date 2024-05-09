@@ -1,43 +1,52 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sửa Học Sinh</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-<div class="container mt-5">
-    <h2 class="mb-4">Chỉnh sửa thông tin học sinh</h2>
-    <form action="/home/sua" method="POST">
-        <div class="mb-3">
-            <label for="ho_ten" class="form-label">Họ và tên:</label>
-            <input type="text" class="form-control" id="ho_ten" name="ho_ten" placeholder="Nhập họ và tên" required>
-        </div>
-        <div class="mb-3">
-            <label for="ngay_sinh" class="form-label">Ngày sinh:</label>
-            <input type="date" class="form-control" id="ngay_sinh" name="ngay_sinh" required>
-        </div>
-        <div class="mb-3">
-            <label for="dia_chi" class="form-label">Địa chỉ:</label>
-            <input type="text" class="form-control" id="dia_chi" name="dia_chi" placeholder="Nhập địa chỉ" required>
-        </div>
-        <div class="mb-3">
-            <label for="lop" class="form-label">Lớp:</label>
-            <input type="text" class="form-control" id="lop" name="lop" placeholder="Nhập lớp" required>
-        </div>
-        <div class="mb-3">
-            <label for="gioi_tinh" class="form-label">Giới tính:</label>
-            <select class="form-select" id="gioi_tinh" name="gioi_tinh" required>
-                <option value="Nam">Nam</option>
-                <option value="Nữ">Nữ</option>
-            </select>
-        </div>
-        <div class="mb-3">
-            <label for="dan_toc" class="form-label">Dân tộc:</label>
-            <input type="text" class="form-control" id="dan_toc" name="dan_toc" placeholder="Nhập dân tộc" required>
-        </div>
-        <button type="submit" class="btn btn-primary">Lưu</button>
-    </form>
-</div>
+    <div class="container mt-5">
+        <h2 class="mb-4">Sửa Học Sinh</h2>
+        <form action="/home/update" method="post">
+                 <input type="hidden" name="id" th:value="${hocsinh.hoc_sinh_id}" />
+            <div class="mb-3">
+                <label for="hoDem" class="form-label">Họ đệm:</label>
+                <input type="text" class="form-control" id="hoDem" name="ho_dem" th:value="${hocsinh.ho_dem}">
+            </div>
+            <div class="mb-3">
+                <label for="ten" class="form-label">Tên:</label>
+                <input type="text" class="form-control" id="ten" name="ten" th:value="${hocsinh.ten}">
+            </div>
+            <div class="mb-3">
+                <label for="ngaySinh" class="form-label">Ngày sinh:</label>
+                <input type="date" class="form-control" id="ngaySinh" name="ngay_sinh" th:value="${#dates.format(hocsinh.ngay_sinh, 'yyyy-MM-dd')}">
+            </div>
+            <div class="mb-3">
+                <label for="lopId" class="form-label">Lớp ID:</label>
+                <input type="text" class="form-control" id="lopId" name="lop_id" th:value="${hocsinh.lop_id}">
+            </div>
+            <div class="mb-3">
+                <label for="danToc" class="form-label">Dân tộc:</label>
+                <input type="text" class="form-control" id="danToc" name="dan_toc" th:value="${hocsinh.dan_toc}">
+            </div>
+            <div class="mb-3">
+                <label for="diaChi" class="form-label">Địa chỉ:</label>
+                <input type="text" class="form-control" id="diaChi" name="dia_chi" th:value="${hocsinh.dia_chi}">
+            </div>
+            <div class="mb-3">
+                <label for="noiSinh" class="form-label">Nơi sinh:</label>
+                <input type="text" class="form-control" id="noiSinh" name="noi_sinh" th:value="${hocsinh.noi_sinh}">
+            </div>
+            <button type="submit" class="btn btn-primary">Lưu</button>
+            <a href="/home/all" class="btn btn-secondary">Hủy</a>
+        </form>
+    </div>
 
+    <!-- Bootstrap JS và Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
 </body>
 </html>

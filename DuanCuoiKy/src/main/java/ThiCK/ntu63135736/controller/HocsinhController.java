@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.bind.support.SessionStatus;
 
 import ThiCK.ntu63135736.model.Hocsinhmodel;
 import ThiCK.ntu63135736.model.LopHocmodel;
@@ -84,12 +83,33 @@ public class HocsinhController {
 	}
 
 	
-	 @GetMapping("/home/sua/{id}")
-	    public String suaHocsinhmodel(@PathVariable int id, Model model) {
-	        Hocsinhmodel student = hocsinhService.findHocsinhmodelByID(id);
-	        model.addAttribute("student", student);
-	        return "suaHocsinh";
+	 @GetMapping("/editHocsinh")
+	    public String showEditForm(@RequestParam("id") int id, Model model) {
+	        Hocsinhmodel hocsinh = hocsinhService.findHocsinhmodelByID(id);
+	        model.addAttribute("hocsinh", hocsinh);
+	        return "suaHocsinh"; // Trả về tên của view
 	    }
-	 
+	 @PostMapping("/update")
+	 public String updateHocsinh(@RequestParam("id") int id, @RequestParam("ho_dem") String hoDem,@RequestParam("noi_sinh") String noisinh,@RequestParam("ngay_sinh") Date ngaysinh, @RequestParam("ten") String ten, @RequestParam("lop_id") String lopid,@RequestParam("dan_toc") String dantoc, @RequestParam("dia_chi") String diaChi) {
+	     Hocsinhmodel hocsinh = hocsinhService.findHocsinhmodelByID(id);
+	     if (hocsinh != null) {
+	    	 hocsinh.setHoc_sinh_id(id);
+	         hocsinh.setHo_dem(hoDem);
+	         hocsinh.setTen(ten);
+	         hocsinh.setNgay_sinh(ngaysinh);
+	         hocsinh.setDia_chi(diaChi);
+	         hocsinh.setDan_toc(dantoc);
+	         hocsinh.setNoi_sinh(noisinh);
+	         hocsinh.setLop_id(lopid);
+	         
+	         hocsinhService.editHocsinhmodel(hocsinh);
+	     }
+	     return "redirect:/home/all"; // Chuyển hướng về danh sách học sinh sau khi cập nhật
+	 }
+	 @PostMapping("/delete/{id}")
+	    public String deleteHocsinh(@PathVariable("id") int id) {
+	        hocsinhService.deleteHocsinhmodel(id);
+	        return "redirect:/home/all"; // Chuyển hướng về danh sách học sinh sau khi xóa
+	    }
 	}
 

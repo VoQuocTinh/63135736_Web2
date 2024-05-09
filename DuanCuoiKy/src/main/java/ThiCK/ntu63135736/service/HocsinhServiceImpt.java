@@ -34,7 +34,7 @@ public class HocsinhServiceImpt implements HocsinhService{
 		hocsinhRepository.deleteById(id);
 	}
 	@Override
-	public void suaHocsinhmodel(Hocsinhmodel hocsinhmodel) {
+	public void editHocsinhmodel(Hocsinhmodel hocsinhmodel) {
 		hocsinhRepository.save(hocsinhmodel);
 	}
 
