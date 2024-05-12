@@ -1,11 +1,14 @@
 package ThiCK.ntu63135736.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import ThiCK.ntu63135736.model.Hocsinhmodel;
 import ThiCK.ntu63135736.responsitory.HocsinhResponsitory;
 
+import java.sql.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -38,5 +41,8 @@ public class HocsinhServiceImpt implements HocsinhService{
 		hocsinhRepository.save(hocsinhmodel);
 	}
 
-
+	 @Override
+	    public Page<Hocsinhmodel> findAll(Pageable pageable) {
+	        return hocsinhRepository.findAll(pageable);
+	    }
 }

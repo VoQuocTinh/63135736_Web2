@@ -1,6 +1,8 @@
 package ThiCK.ntu63135736.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -25,17 +27,17 @@ public class HocsinhController {
 	@Autowired  HttpSession session;
 
 	 @GetMapping("/all")
-	    public String getAll(Model model) {
+	    public String getAll(Model model, @RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "5") int size) {
 	        // Kiểm tra xem người dùng đã đăng nhập hay chưa
 	        if (session.getAttribute("user") == null) {
 	            // Nếu chưa đăng nhập, chuyển hướng đến trang đăng nhập
 	            return "redirect:/User/login";
 	        }
+	        Page<Hocsinhmodel> hocsinhPage = hocsinhService.findAll(PageRequest.of(page, size));
 
-	        // Nếu đã đăng nhập, tiếp tục xử lý request
-	        List<Hocsinhmodel> dsHS = hocsinhService.findallHocsinhmodel();
-	        model.addAttribute("dsHocSinh", dsHS);
+	        model.addAttribute("dsHocSinh", hocsinhPage);
 	        return "danhsachHS";
+	       
 	        
 	    }
 	 @PostMapping("/login")
@@ -71,9 +73,10 @@ public class HocsinhController {
 	                             @RequestParam String dia_chi,
 	                             @RequestParam String dan_toc,
 	                             @RequestParam String noi_sinh,
+	                             @RequestParam String gioi_tinh,
 	                             @RequestParam String lop_id) {
 	    // Tạo một đối tượng Hocsinhmodel mới
-	    Hocsinhmodel hocSinh = new Hocsinhmodel(ho_dem, ten, ngay_sinh, dia_chi, dan_toc, noi_sinh, lop_id);
+	    Hocsinhmodel hocSinh = new Hocsinhmodel(ho_dem, ten, ngay_sinh, dia_chi, dan_toc, noi_sinh, gioi_tinh, lop_id);
 	    
 	    // Thêm học sinh mới vào cơ sở dữ liệu bằng service
 	    hocsinhService.addHocsinhmodel(hocSinh);
@@ -90,7 +93,7 @@ public class HocsinhController {
 	        return "suaHocsinh"; // Trả về tên của view
 	    }
 	 @PostMapping("/update")
-	 public String updateHocsinh(@RequestParam("id") int id, @RequestParam("ho_dem") String hoDem,@RequestParam("noi_sinh") String noisinh,@RequestParam("ngay_sinh") Date ngaysinh, @RequestParam("ten") String ten, @RequestParam("lop_id") String lopid,@RequestParam("dan_toc") String dantoc, @RequestParam("dia_chi") String diaChi) {
+	 public String updateHocsinh(@RequestParam("id") int id, @RequestParam("ho_dem") String hoDem,@RequestParam("noi_sinh") String noisinh,@RequestParam("gioi_tinh") String gioi_tinh,@RequestParam("ngay_sinh") Date ngaysinh, @RequestParam("ten") String ten, @RequestParam("lop_id") String lopid,@RequestParam("dan_toc") String dantoc, @RequestParam("dia_chi") String diaChi) {
 	     Hocsinhmodel hocsinh = hocsinhService.findHocsinhmodelByID(id);
 	     if (hocsinh != null) {
 	    	 hocsinh.setHoc_sinh_id(id);
@@ -100,16 +103,18 @@ public class HocsinhController {
 	         hocsinh.setDia_chi(diaChi);
 	         hocsinh.setDan_toc(dantoc);
 	         hocsinh.setNoi_sinh(noisinh);
+	         hocsinh.setGioi_tinh(gioi_tinh);
 	         hocsinh.setLop_id(lopid);
 	         
 	         hocsinhService.editHocsinhmodel(hocsinh);
-	     }
+	     }	
 	     return "redirect:/home/all"; // Chuyển hướng về danh sách học sinh sau khi cập nhật
 	 }
 	 @PostMapping("/delete/{id}")
 	    public String deleteHocsinh(@PathVariable("id") int id) {
 	        hocsinhService.deleteHocsinhmodel(id);
 	        return "redirect:/home/all"; // Chuyển hướng về danh sách học sinh sau khi xóa
-	    }
+	 }
+
 	}
 

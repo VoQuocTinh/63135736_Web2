@@ -40,6 +40,14 @@
                 <label for="noiSinh" class="form-label">Nơi sinh:</label>
                 <input type="text" class="form-control" id="noiSinh" name="noi_sinh" th:value="${hocsinh.noi_sinh}">
             </div>
+            <div class="mb-3">
+    <select class="form-select" id="gioiTinh" name="gioi_tinh">
+        <option value="Nam" th:selected="${hocsinh.gioi_tinh == 'Nam'}">Nam</option>
+        <option value="Nữ" th:selected="${hocsinh.gioi_tinh == 'Nữ'}">Nữ</option>
+    </select>
+   
+</div>
+            
             <button type="submit" class="btn btn-primary">Lưu</button>
             <a href="/home/all" class="btn btn-secondary">Hủy</a>
         </form>
