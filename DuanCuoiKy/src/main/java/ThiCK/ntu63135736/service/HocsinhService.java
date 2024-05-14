@@ -2,6 +2,7 @@ package ThiCK.ntu63135736.service;
 
 import java.sql.Date;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -18,4 +19,5 @@ public interface HocsinhService {
     void deleteHocsinhmodel(int id);
     void editHocsinhmodel(Hocsinhmodel hocsinhmodel);
     Page<Hocsinhmodel> findAll(Pageable pageable);
+	Hocsinhmodel search(String hoc_sinh_id, String ho_dem, String ten, Date ngay_sinh, String lop_id, String gioi_tinh);
 }
