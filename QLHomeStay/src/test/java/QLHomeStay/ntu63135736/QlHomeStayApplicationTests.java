@@ -1,4 +1,4 @@
-package ThiCK.ntu63135736;
+package QLHomeStay.ntu63135736;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
