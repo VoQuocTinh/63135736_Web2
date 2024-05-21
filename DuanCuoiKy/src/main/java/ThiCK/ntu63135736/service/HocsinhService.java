@@ -19,5 +19,5 @@ public interface HocsinhService {
     void deleteHocsinhmodel(int id);
     void editHocsinhmodel(Hocsinhmodel hocsinhmodel);
     Page<Hocsinhmodel> findAll(Pageable pageable);
-	Hocsinhmodel search(String hoc_sinh_id, String ho_dem, String ten, Date ngay_sinh, String lop_id, String gioi_tinh);
+
 }

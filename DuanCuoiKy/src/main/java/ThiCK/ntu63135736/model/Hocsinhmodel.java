@@ -39,24 +39,34 @@ public class Hocsinhmodel {	// Tên lớp ta viết hoa chữ cái đầu
     private String lop_id;
     
     // Constructors
-    public Hocsinhmodel() {
-    }
-    
-    public Hocsinhmodel(String ho_dem, String ten, Date ngay_sinh, String dia_chi, String dan_toc, String noi_sinh,String gioi_tinh, String lop_id) {
-        this.ho_dem = ho_dem;
-        this.ten = ten;
-        this.ngay_sinh = ngay_sinh;
-        this.dia_chi = dia_chi;
-        this.dan_toc = dan_toc;
-        this.noi_sinh = noi_sinh;
-        this.gioi_tinh = gioi_tinh;
-        this.lop_id = lop_id;
-    }
+      public Hocsinhmodel() {
 
-    // Getters and Setters
+		
+	}
+   
+
+
+	public Hocsinhmodel( String ho_dem, String ten, Date ngay_sinh, String dia_chi, String dan_toc,
+			String noi_sinh, String gioi_tinh, String lop_id) {
+		super();
+		this.ho_dem = ho_dem;
+		this.ten = ten;
+		this.ngay_sinh = ngay_sinh;
+		this.dia_chi = dia_chi;
+		this.dan_toc = dan_toc;
+		this.noi_sinh = noi_sinh;
+		this.gioi_tinh = gioi_tinh;
+		this.lop_id = lop_id;
+	}
+
+
+
+	// Getters and Setters
     public int getHoc_sinh_id() {
 		return hoc_sinh_id;
 	}
+
+	
 
 	public void setHoc_sinh_id(int hoc_sinh_id) {
 		this.hoc_sinh_id = hoc_sinh_id;

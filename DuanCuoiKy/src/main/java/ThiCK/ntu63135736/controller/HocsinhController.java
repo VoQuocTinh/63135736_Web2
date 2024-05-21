@@ -3,6 +3,7 @@ package ThiCK.ntu63135736.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -13,6 +14,7 @@ import ThiCK.ntu63135736.model.Usermodel;
 import ThiCK.ntu63135736.service.HocsinhServiceImpt;
 import ThiCK.ntu63135736.service.LopHocServiceImpt;
 import ThiCK.ntu63135736.service.UserServiceImpt;
+import jakarta.persistence.criteria.CriteriaBuilder.In;
 import jakarta.servlet.http.HttpSession;
 
 import java.sql.Date;
@@ -50,14 +52,7 @@ public class HocsinhController {
 	         model.addAttribute("error", "Invalid username or password");
 	         return "login"; // Trả về trang đăng nhập với thông báo lỗi
 	     }
-	 }
-	 @GetMapping("/logout")
-	    public String logout(HttpSession session) {
-	        // Xóa thông tin phiên đăng nhập
-	        session.invalidate();
-	        // Chuyển hướng người dùng đến trang đăng nhập
-	        return "redirect:/User/login";
-	    }	
+	 }	
 	@GetMapping("/them")
 	public String themHocSinh(Model model) {
         // Lấy danh sách các lớp học từ cơ sở dữ liệu
@@ -115,20 +110,15 @@ public class HocsinhController {
 	        hocsinhService.deleteHocsinhmodel(id);
 	        return "redirect:/home/all"; // Chuyển hướng về danh sách học sinh sau khi xóa
 	 }
-	 @GetMapping("/timkiem")
-	    public String searchHocsinh(
-	            @RequestParam(name = "hoc_sinh_id", required = false) String hoc_sinh_id,
-	            @RequestParam(name = "ho_dem", required = false) String ho_dem,
-	            @RequestParam(name = "ten", required = false) String ten,
-	            @RequestParam(name = "ngay_sinh 'yyyy/MM/dd'", required = false) Date ngay_sinh,
-	            @RequestParam(name = "lop_id", required = false) String lop_id,
-	            @RequestParam(name = "gioi_tinh", required = false) String gioi_tinh,
-	            Model model) {
-	        	
-	        Hocsinhmodel dsHocSinh = hocsinhService.search(hoc_sinh_id, ho_dem, ten, ngay_sinh, lop_id, gioi_tinh);
-	        model.addAttribute("dsHocSinh", dsHocSinh);
-	        
-	        return "danhsachHS"; // Trả về view để hiển thị kết quả tìm kiếm
+	 
+	 @GetMapping("/thongtinhocsinh/{id}")
+	    public String thongTinHocSinh(@PathVariable("id") Integer id, Model model) {
+	        Hocsinhmodel hocSinh = hocsinhService.findHocsinhmodelByID(id);
+	        if (hocSinh == null) {
+	            return "redirect:/home/all"; 
+	        }
+	        model.addAttribute("hocSinh", hocSinh);
+	        return "thongtinHS";
 	    }
 	}
 

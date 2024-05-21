@@ -57,58 +57,7 @@ public class HocsinhServiceImpt implements HocsinhService{
 	        return hocsinhRepository.findAll(pageable);
 	    }
 
-	 @Override
-	 public Hocsinhmodel search(String hoc_sinh_id, String ho_dem, String ten, Date ngay_sinh, String lop_id, String gioi_tinh) {
-	     // Tạo câu truy vấn JPQL
-	     StringBuilder jpql = new StringBuilder("SELECT h FROM Hocsinhmodel h WHERE 1=1");
-
-	     // Xử lý các tham số tìm kiếm
-	     if (hoc_sinh_id != null && !hoc_sinh_id.isEmpty()) {
-	         jpql.append(" AND h.hoc_sinh_id = :hoc_sinh_id");
-	     }
-	     if (ho_dem != null && !ho_dem.isEmpty()) {
-	         jpql.append(" AND h.ho_dem LIKE :ho_dem");
-	     }
-	     if (ten != null && !ten.isEmpty()) {
-	         jpql.append(" AND h.ten LIKE :ten");
-	     }
-	     if (ngay_sinh != null) {
-	         jpql.append(" AND h.ngay_sinh = :ngay_sinh");
-	     }
-	     if (lop_id != null && !lop_id.isEmpty()) {
-	         jpql.append(" AND h.lop_id = :lop_id");
-	     }
-	     if (gioi_tinh != null && !gioi_tinh.isEmpty()) {
-	         jpql.append(" AND h.gioi_tinh = :gioi_tinh");
-	     }
-
-	     // Tạo và thực thi truy vấn
-	     TypedQuery<Hocsinhmodel> query = entityManager.createQuery(jpql.toString(), Hocsinhmodel.class);
-	     // Gán giá trị cho các tham số
-	     if (hoc_sinh_id != null && !hoc_sinh_id.isEmpty()) {
-	         query.setParameter("hoc_sinh_id", hoc_sinh_id);
-	     }
-	     if (ho_dem != null && !ho_dem.isEmpty()) {
-	         query.setParameter("ho_dem", "%" + ho_dem + "%");
-	     }
-	     if (ten != null && !ten.isEmpty()) {
-	         query.setParameter("ten", "%" + ten + "%");
-	     }
-	     if (ngay_sinh != null) {
-	         query.setParameter("ngay_sinh", ngay_sinh);
-	     }
-	     if (lop_id != null && !lop_id.isEmpty()) {
-	         query.setParameter("lop_id", lop_id);
-	     }
-	     if (gioi_tinh != null && !gioi_tinh.isEmpty()) {
-	         query.setParameter("gioi_tinh", gioi_tinh);
-	     }
-
-	     // Trả về kết quả tìm kiếm đầu tiên hoặc null nếu không tìm thấy
-	     List<Hocsinhmodel> resultList = query.getResultList();
-	     return resultList.isEmpty() ? null : resultList.get(0);
-	 }
-
+	 
 
 
 	}
