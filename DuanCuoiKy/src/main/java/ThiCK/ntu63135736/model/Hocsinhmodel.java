@@ -15,7 +15,7 @@ public class Hocsinhmodel {	// Tên lớp ta viết hoa chữ cái đầu
     
     //----cho cột name-----------------------------------------------------------
     @Column(name = "ho_dem")  // cột của Bảng hocsinh
-    private String ho_dem;	//thuộc tính của Entity Customer   
+    private String ho_dem;	//thuộc tính của Entity hocsinh   
   //----cho cột address-----------------------------------------------------------
     @Column(name = "ten")
     private String ten;

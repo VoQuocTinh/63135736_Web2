@@ -104,7 +104,9 @@
       <!--  Header Start -->
       <header class="app-header" style="padding-left: 0px; padding-right: 0px; width: -webkit-fill-available; background: lightskyblue;">
         <nav class="navbar navbar-expand-lg navbar-light">
+        <a href="/home/all">
         <h1 style="font-size:13pt;margin-top: 5pt; margin-left: 5pt ;">Hồ sơ học sinh</h1>
+        </a>
           <ul class="navbar-nav">
             <li class="nav-item d-block d-xl-none">
               <a class="nav-link sidebartoggler nav-icon-hover" id="headerCollapse" href="javascript:void(0)">
@@ -150,16 +152,16 @@
                     <label for="keyword" class="form-label">Tìm kiếm:</label>
                 </div>
                 <div class="col">
-                    <input type="text" id="keyword1" name="keyword1" class="form-control" placeholder="Mã học sinh">
+                    <input type="text" id="searchMaHS" name="keyword" class="form-control" placeholder="Mã học sinh">
                 </div>
                 <div class="col">
-                    <input type="text" id="keyword2" name="keyword2" class="form-control" placeholder="Họ đệm">
+                    <input type="text" id="searchHoDem" name="keyword" class="form-control" placeholder="Họ đệm">
                 </div>
                 <div class="col">
-                    <input type="text" id="keyword3" name="keyword3" class="form-control" placeholder="Tên">
+                    <input type="text" id="searchTen" name="keyword" class="form-control" placeholder="Tên">
                 </div>
                 <div class="col">
-                    <input type="text" id="lop" name="lop" class="form-control" placeholder="Lớp">
+                    <input type="text" id="searchLop" name="lop" class="form-control" placeholder="Lớp">
                 </div>
                 <div class="col">
                     <button type="button" id="searchBtn" class="btn btn-primary">Tìm kiếm</button>
@@ -167,48 +169,39 @@
             </div>
         </form>
 
-
-
-     <div class="container" style="padding-left: 0px;" >
-    <!-- Nút thêm học sinh -->
-    <div class="mb-3">
-        <a href="/home/them" class="btn btn-success">Thêm học sinh</a>
-    </div>
-    
-    <table class="table table-striped" style="text-align: center;">
-        <thead>
-            <tr>
-                <th scope="col">Mã Học Sinh</th>
-                <th scope="col">Họ đệm</th>
-                <th scope="col">Tên</th>
-                <th scope="col">Giới tính</th>
-                <th scope="col">LớpID</th>
-                <th scope="col">Tác vụ</th>
-            </tr>
-        </thead>
-       <tbody>
-    <!-- Lặp qua danh sách học sinh và hiển thị thông tin của mỗi học sinh -->
-    <tr th:each="hocsinh : ${dsHocSinh}">
-        <td th:text="${hocsinh.hoc_sinh_id}"></td>
-        <td th:text="${hocsinh.ho_dem}"></td>
-        <td th:text="${hocsinh.ten}"></td>
-        <td th:text="${hocsinh.gioi_tinh}"></td>
-        <td th:text="${hocsinh.lop_id}"></td>
-        <!-- Thêm nút sửa, xóa và thông tin -->
-        <td style="width: 300px;">
-            <!-- Nút sửa -->
-            <a th:href="@{/home/editHocsinh(id=${hocsinh.hoc_sinh_id})}" class="btn btn-warning btn-sm">Sửa</a>
-            <!-- Form gửi yêu cầu xóa -->
-            <form th:action="@{/home/delete/{id}(id=${hocsinh.hoc_sinh_id})}" method="post" style="display: inline;">
-                <input type="hidden" name="id" th:value="${hocsinh.hoc_sinh_id}" />
-                <button type="submit" class="btn btn-danger btn-sm">Xóa</button>
-            </form>
-            <!-- Nút thông tin -->
-            <a th:href="@{/home/thongtinhocsinh/{id}(id=${hocsinh.hoc_sinh_id})}" class="btn btn-info btn-sm">Thông tin</a>
-        </td>
-    </tr>
-</tbody>
-    </table>
+        <div class="container" style="padding-left: 0px;">
+            <div class="mb-3">
+                <a href="/home/them" class="btn btn-success">Thêm học sinh</a>
+            </div>
+            <table class="table table-striped" style="text-align: center;">
+                <thead>
+                    <tr>
+                        <th scope="col">Mã Học Sinh</th>
+                        <th scope="col">Họ đệm</th>
+                        <th scope="col">Tên</th>
+                        <th scope="col">Giới tính</th>
+                        <th scope="col">LớpID</th>
+                        <th scope="col">Tác vụ</th>
+                    </tr>
+                </thead>
+                <tbody id="myTable">
+                    <tr th:each="hocsinh : ${dsHocSinh}">
+                        <td th:text="${hocsinh.hoc_sinh_id}"></td>
+                        <td class="ho_dem" th:text="${hocsinh.ho_dem}"></td>
+                        <td class="ten" th:text="${hocsinh.ten}"></td>
+                        <td th:text="${hocsinh.gioi_tinh}"></td>
+                        <td class="lop_id" th:text="${hocsinh.lop_id}"></td>
+                        <td style="width: 300px;">
+                            <a th:href="@{/home/editHocsinh(id=${hocsinh.hoc_sinh_id})}" class="btn btn-warning btn-sm">Sửa</a>
+                            <form th:action="@{/home/delete/{id}(id=${hocsinh.hoc_sinh_id})}" method="post" style="display: inline;">
+                                <input type="hidden" name="id" th:value="${hocsinh.hoc_sinh_id}" />
+                                <button type="submit" class="btn btn-danger btn-sm">Xóa</button>
+                            </form>
+                            <a th:href="@{/home/thongtinhocsinh/{id}(id=${hocsinh.hoc_sinh_id})}" class="btn btn-info btn-sm">Thông tin</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
 	<!-- Hiển thị phân trang -->
     <div th:if="${dsHocSinh.totalPages > 1}">
     <ul class="pagination" style="justify-content: center;">
@@ -233,7 +226,8 @@
 	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
 	<script src="../assets/libs/jquery/dist/jquery.min.js"></script>
-		
+	<script src="/js/search.js"></script>
+	
 
 	
 

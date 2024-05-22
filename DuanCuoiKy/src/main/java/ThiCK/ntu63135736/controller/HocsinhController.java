@@ -3,6 +3,7 @@ package ThiCK.ntu63135736.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -110,7 +111,7 @@ public class HocsinhController {
 	        hocsinhService.deleteHocsinhmodel(id);
 	        return "redirect:/home/all"; // Chuyển hướng về danh sách học sinh sau khi xóa
 	 }
-	 
+	
 	 @GetMapping("/thongtinhocsinh/{id}")
 	    public String thongTinHocSinh(@PathVariable("id") Integer id, Model model) {
 	        Hocsinhmodel hocSinh = hocsinhService.findHocsinhmodelByID(id);
