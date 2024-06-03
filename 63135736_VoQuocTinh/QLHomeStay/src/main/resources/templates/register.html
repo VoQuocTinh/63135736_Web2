@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Đăng ký</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+    .container {
+      max-width: 400px;
+      margin: 50px auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    form input[type="text"],
+    form input[type="email"],
+    form input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ced4da;
+      border-radius: 5px;
+    }
+    form button[type="submit"] {
+      width: 100%;
+      padding: 10px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    form button[type="submit"]:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Đăng ký</h2>
+   <form action="/register" method="post">
+    <div class="mb-3">
+        <input type="text" name="tendangnhap" class="form-control" placeholder="Tên đăng nhập" required>
+    </div>
+    <div class="mb-3">
+        <input type="email" name="emailnguoidung" class="form-control" placeholder="Email" required>
+    </div>
+    <div class="mb-3">
+        <input type="password" name="matkhaunguoidung" class="form-control" placeholder="Mật khẩu" required>
+    </div>
+    <div class="mb-3">
+        <input type="password" name="confirmPassword" class="form-control" placeholder="Xác nhận mật khẩu" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Đăng ký</button>
+</form>
+
+     <!-- Thẻ để hiển thị thông báo thành công -->
+  <div th:if="${successMessage}" class="alert alert-success" role="alert">
+    <span th:text="${successMessage}"></span>
+  </div>
+  </div>
+</body>
+</html>

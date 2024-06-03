@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Sửa Phòng</title>
+</head>
+<body>
+    <h1>Sửa Phòng</h1>
+    <form th:action="@{/admin/phong/sua/{id}(id=${phong.maphong})}" th:object="${phong}" method="post">
+        <div>
+            <label>Mã Phòng</label>
+            <input type="text" th:field="*{maphong}" readonly />
+        </div>
+        <div>
+            <label>Tên Phòng</label>
+            <input type="text" th:field="*{tenphong}" />
+        </div>
+        <div>
+            <label>Giá</label>
+            <input type="text" th:field="*{gia}" />
+        </div>
+        <div>
+            <label>Mô Tả Ngắn</label>
+            <input type="text" th:field="*{motangan}" />
+        </div>
+        <div>
+            <label>Mô Tả Dài</label>
+            <input type="text" th:field="*{motadai}" />
+        </div>
+        <div>
+            <label>Số Người</label>
+            <input type="text" th:field="*{songuoi}" />
+        </div>
+        <div>
+            <label>Dịch Vụ Đi Kèm</label>
+            <textarea th:field="*{dichvudikem}"></textarea>
+        </div>
+        <div>
+            <button type="submit">Lưu</button>
+        </div>
+    </form>
+</body>
+</html>
