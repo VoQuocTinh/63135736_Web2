@@ -10,9 +10,8 @@ public interface Userservice {
 
 	Usermodel findByUsername(String tendangnhap);
 	boolean authenticate(String tendangnhap, String matkhaunguoidung);
-    List<Usermodel> getAllUsers(); // Thêm phương thức này
+    List<Usermodel> getAllUsers(); 
 	boolean isValidUser(String tendangnhap, String matkhaunguoidung, String emailnguoidung);
-	void addUser(Usermodel user);
 	String getUserRole(String mavaitromacdinh);
 
 

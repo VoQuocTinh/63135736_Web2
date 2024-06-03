@@ -26,12 +26,5 @@ public class Usercontroller {
         model.addAttribute("listUsers", listUsers);
         return "User";
     }
-	@PostMapping("/register")
-    public String register(@ModelAttribute("user") Usermodel user, RedirectAttributes redirectAttributes) {
-        // Thêm user vào cơ sở dữ liệu
-        userService.addUser(user);
-        // Chuyển hướng đến trang đăng nhập
-        redirectAttributes.addFlashAttribute("successMessage", "Đăng ký thành công! Vui lòng đăng nhập.");
-        return "redirect:/login";
-    }
+	
 	}

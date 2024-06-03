@@ -23,22 +23,19 @@ public class Logincontroller {
     }
     @PostMapping("/login")
     public String login(String tendangnhap, String matkhaunguoidung, String emailnguoidung, HttpSession session) {
-        // Xác thực thông tin đăng nhập
         if (userService.isValidUser(tendangnhap, matkhaunguoidung, emailnguoidung)) {
-            // Lấy vai trò của người dùng từ cơ sở dữ liệu
-            String role = userService.getUserRole(tendangnhap); // Giả sử có một phương thức getUserRole trong userService
+        	
+            String role = userService.getUserRole(tendangnhap); 
             
             // Lưu thông tin đăng nhập vào phiên làm việc
             session.setAttribute("username", tendangnhap);
             
-            // Chuyển hướng dựa trên vai trò của người dùng
             if ("admin".equals(role)) {
                 return "redirect:/admin";
             } else {
                 return "redirect:/index";
             }
         } else {
-            // Đăng nhập không thành công, chuyển hướng lại trang đăng nhập
             return "redirect:/login";
         }
     }
