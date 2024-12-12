@@ -11,5 +11,4 @@ import ThiCK.ntu63135736.model.LopHocmodel;
 public interface LopHocResponsitory extends JpaRepository<LopHocmodel, Integer> {
 
 
-
 }

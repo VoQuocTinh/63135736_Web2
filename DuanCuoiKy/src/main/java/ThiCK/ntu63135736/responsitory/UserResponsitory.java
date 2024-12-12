@@ -10,7 +10,6 @@ public interface UserResponsitory extends JpaRepository<Usermodel, Integer> {
 
 	Usermodel findUserByUsernameAndPassword(String username, String password);
 
-	
 
 	    
 }

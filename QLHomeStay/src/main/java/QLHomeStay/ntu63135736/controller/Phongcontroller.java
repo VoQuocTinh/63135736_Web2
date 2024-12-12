@@ -45,7 +45,7 @@ import QLHomeStay.ntu63135736.service.Phongservice;
 	    public String showFormForUpdate(@PathVariable(value = "id") int id, Model model) {
 	        Phongmodel phong = phongService.getPhongById(id);
 	        model.addAttribute("phong", phong);
-	        return "suaphong"; // Tên template Thymeleaf cho form sửa phòng
+	        return "suaphong"; 
 	    }
 	    @PostMapping("/phong/sua/{id}")
 	    public String updatePhong(@ModelAttribute("phong") Phongmodel phong) {

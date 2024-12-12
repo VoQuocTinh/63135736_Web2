@@ -15,5 +15,5 @@ public interface Phongservice {
 	    public Phongmodel getPhongById(int id);
 	    public void deletePhongById(int id);
 	    public Page<Phongmodel> getAllPhongs(Pageable pageable);
-	    void updatePhong(Phongmodel phong); // Thêm phương thức này
+	    void updatePhong(Phongmodel phong);
 }
